@@ -1,0 +1,90 @@
+综述：
+    HTML：超文本文件，包含文字、图片、视频、音频、链接等内容
+
+    浏览器：IE、Edge、Safari、Chrome、FireFox
+
+    Web标准：W3C等组织制定的一系列标准的集合
+        结构：用于对网页元素进行整理和分类，HTML
+        表现：用于设置网页元素的板式、颜色、大小等外观样式，CSS
+        行为：指网页模型的定义及交互的编写，JavaScript
+    结构、表现、行为相分离，不同标准写入不同文件
+    相比较而言，结构最重要
+
+标签：
+    HTML规范：
+        <html></html>
+            1、尖括号
+            2、开始标签和结束标签成对出现
+            3、个别为单标签 eg:换行标签<br />
+
+        标签关系：
+            1、包含关系
+            2、并列关系
+
+        基本结构标签（骨架标签）：
+            <html></html>：根标签
+                <head></head>：头部标签
+                    <title></title>：标题标签
+                <body></body>：主体标签
+    注释标签：
+        <!DOCTYPE>：文档类型声明标签，声明该文档的类型  eg:<!DOCTYPE html>
+            必须写在文档最上面
+        lang：用于定义文档显示语言  eg:<html lang='en'>
+            en 英文
+            zh-CN 中文
+        字符集：多个字符的集合，以便计算机识别储存各种文字  eg:<meta charset="UTF-8">
+
+    主体常见标签：
+        标题标签：作为标题，共6级 <h1>-<h6>
+        段落标签：将网页分为若干段落 <p>
+        换行标签：强制换行（单标签）<br />
+    
+    文本格式标签
+        加粗：<strong></strong> 或 <b></b>
+        倾斜：<em></em> 或 <i></i>
+        删除线：<del></del> 或 <s></s>
+        下划线：<ins></ins> 或 <u></u>
+
+    分区标签：
+        大分区：<div></div>
+            独占一行
+        小分区：<span></span>
+            横排布局
+    
+    图像标签：
+        <img />,必有src：<img src="img.jpg"/>
+        属性：
+            src：图片路径
+            alt：替换文本，图像显示失败时显示的文字
+            title：提示文本，鼠标放图片上显示文字
+            width：图像宽度像素
+            height：图像高度像素
+            border：边框粗细
+    
+    路径：
+        目录文件夹和根目录：
+
+        相对路径：以引用文件所在位置为参考基础
+            同级            eg:<img src="img.jpg" />
+            下一级  /       eg:<img src="images/img.jpg" />
+            上一级  ../     eg:<img src="../img.jpg" />
+
+        绝对路径：被引用文件所在路径，一般以盘符开始
+            网络地址或文件地址 \ eg:<img src="D:\file\imges\img.jpg" />
+                                eg:<img src="https://www.baidu.com/img/flexible/logo/pc/result.png" />
+
+    链接标签：
+        <a></a>，必有href：<a href="https://www.baidu.com/">百度</a>
+        属性：
+            href：url地址
+            target：用于指定链接页面的打开方式，其中_self为默认值在当前窗口打开，_blank为在新窗口中打开
+
+        分类：
+            外部链接：外部网站，必须以https://开头  eg：<a href="https://www.baidu.com/">百度</a>
+            内部链接：内部其他网页的链接，直接写入链接路径就可以了  eg：<a href="jianjie.html/">公司简介</a>（需保证同级目录下存在该文件）
+            空链接：href为#   eg：<a href="#">空链接</a>
+            下载链接：href为文件或压缩包地址    eg：<a href="img.jpg">下载图片</a>
+            网页元素的链接：在网页中的网页元素的链接    eg：<a href="https://www.baidu.com/"><img src="https://www.baidu.com/img/flexible/logo/pc/result.png" /></a>
+            锚点连接：点击链接之后可以快速跳转到指定位置，href="#id"。需保证想跳转的位置存在id属性。    eg：<a href="#shengya">主要生涯</a>后面存在id为"shengya"的元素
+            
+
