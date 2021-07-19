@@ -50,3 +50,29 @@ less中获取元素的方法：
     })
   },
 
+子组件/父组件互相调用方法：
+  子组件调用父组件：
+    1、子组件方法中声明：
+      childMethod() {
+        this.$parent.fatherMethod();
+      }
+    2、利用JSON的emit：
+      父组件声明：
+        <child @fatherMethod="fatherMethod"></child>
+      子组件调用：
+        childMethod() {
+          this.$emit('fatherMethod');
+        }
+    3、父组件直接传入：
+        <child :fatherMethod="fatherMethod"></child>
+      子组件调用：
+        childMethod() {
+          if (this.fatherMethod) {
+            this.fatherMethod();
+          }
+        }
+  父组件调用子组件：
+    1、通过ref：
+      <Child ref="child1"/>
+      method：
+        this.$refs.child1.childMethod();
