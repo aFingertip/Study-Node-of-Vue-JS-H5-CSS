@@ -1,0 +1,52 @@
+less中获取元素的方法：
+    .xxxxx{
+
+    }           //根据类名获取元素
+    xxxxx{
+
+    }           //根据标签名获取元素
+    #xxxx{
+
+    }           //根据id获取元素
+    
+获取其他文件的数据
+1、vuex:
+    引入mapMutations来获取方法
+    并且在下面中添加相关引用、定义
+        store.mutations
+        AppLang
+        EditAttr
+2、子组件继承父组件：
+    自查
+
+字体居中对齐：
+    水平居中：
+        text-align: center;
+    垂直居中：
+        padding
+        vertical-align: middle;
+        align-items: center;//!!!!!!!!
+
+深度复制:
+  简单复制属于引用，指向的内存地址相同，一个改变都会改变
+  深度复制有两种方法：
+    1、deepCopy()，编写深度复制的方法
+    2、通过JSON改变，首先通过stringify方法转为字符串，再通过parse方法转为obj对象
+
+调用后台：
+  通过Ajax框架调用后台接口
+  Tips：
+    1、post、delete、patch、get：增删改查
+    2、
+  updateMouseSettings(param){
+    const mouseSettingsCab = JSON.stringify(param);
+    const that = this;
+    this.axios.patch(constant.updateUserPreferences , {mouseSettingsCab}).then(function (response) {
+      if(response.data.success === 1){
+        that.$Message.success(that.$t("app.saveSuccess"));
+      }else{
+        that.$Message.error(that.$t("app.saveFailed"));
+      }
+    })
+  },
+
