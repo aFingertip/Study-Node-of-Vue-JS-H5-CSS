@@ -18,6 +18,33 @@ less中获取元素的方法：
         EditAttr
 2、子组件继承父组件：
     自查
+    
+子组件/父组件互相调用方法：
+  子组件调用父组件：
+    1、子组件方法中声明：
+      childMethod() {
+        this.$parent.fatherMethod();
+      }
+    2、利用JSON的emit：
+      父组件声明：
+        <child @fatherMethod="fatherMethod"></child>
+      子组件调用：
+        childMethod() {
+          this.$emit('fatherMethod');
+        }
+    3、父组件直接传入：
+        <child :fatherMethod="fatherMethod"></child>
+      子组件调用：
+        childMethod() {
+          if (this.fatherMethod) {
+            this.fatherMethod();
+          }
+        }
+  父组件调用子组件：
+    1、通过ref：
+      <Child ref="child1"/>
+      method：
+        this.$refs.child1.childMethod();
 
 字体居中对齐：
     水平居中：
@@ -50,29 +77,34 @@ less中获取元素的方法：
     })
   },
 
-子组件/父组件互相调用方法：
-  子组件调用父组件：
-    1、子组件方法中声明：
-      childMethod() {
-        this.$parent.fatherMethod();
-      }
-    2、利用JSON的emit：
-      父组件声明：
-        <child @fatherMethod="fatherMethod"></child>
-      子组件调用：
-        childMethod() {
-          this.$emit('fatherMethod');
-        }
-    3、父组件直接传入：
-        <child :fatherMethod="fatherMethod"></child>
-      子组件调用：
-        childMethod() {
-          if (this.fatherMethod) {
-            this.fatherMethod();
-          }
-        }
-  父组件调用子组件：
-    1、通过ref：
-      <Child ref="child1"/>
-      method：
-        this.$refs.child1.childMethod();
+v-for/v-if:
+  2.x:
+    v-for > v-if: 每次v-for均会执行v-if
+  3.x:
+    v-for < v-if：v-if不能取到v-for的参数
+
+通过<div>/<button>实现radioGroup的功能：
+  <div class="defaultClass" :class="flag ? 'selectedDiv' : ''" @click="selectDiv(this)"></div>
+
+  data:{
+    return{
+      selectedDiv: '';
+    }
+  },
+  method:{
+    selectDiv(target){
+      this.selectedDiv = target;
+    },
+  }
+
+  .selectedDiv{
+    background-color: red;
+  }
+  Tips： 见下条
+
+CSS优先级：
+  1、内联>最近的祖先>其他祖先
+  2、内联样式 > ID 选择器 > 类选择器 = 属性选择器 = 伪类选择器 > 标签选择器 = 伪元素选择器
+  3、样式被应用的位置越在下面则优先级越高
+  4、属性后插有 !important 的属性拥有最高优先级
+
