@@ -17,7 +17,7 @@ less中获取元素的方法：
         AppLang
         EditAttr
 2、子组件继承父组件：
-    自查
+    
     
 子组件/父组件互相调用方法：
   子组件调用父组件：
@@ -100,7 +100,17 @@ v-for/v-if:
   .selectedDiv{
     background-color: red;
   }
-  Tips： 见下条
+  或者：
+    父组件style：
+      <style  lang="less">
+        .selected{
+          background: red;
+        }
+      </style>
+
+  Tips：
+    1、见下条
+    2、scoped修饰符的style块只对当前页面生效，子组件、父组件不能生效
 
 CSS优先级：
   1、内联>最近的祖先>其他祖先
