@@ -120,3 +120,53 @@ CSS优先级：
 
 出现无法刷新组件的情况：
   向组件绑定一个肯定会改变的key eg：:key="'test' + index + array.length"
+
+新手引导组件：
+  introjs组件：
+    安装：
+      npm install intro.js
+      npm install vue-introjs
+      在main.js中引用：
+        import VueIntro from 'vue-introjs';
+        Vue.use(VueIntro);
+        import 'intro.js/introjs.css';
+    使用：
+      HTML：
+        可以通过HTML绑定，API：
+          data-intro：contain text
+          data-title：
+          data-step：
+          data-tooltipClass：
+          data-highlightClass：
+          data-position：top, left, right, bottom, bottom-left-aligned (same as bottom), bottom-middle-aligned, bottom-right-aligned or auto
+          data-scrollTo：element or tooltip
+          data-disable-interaction：true不可交互
+
+事件监听：
+  1、vuex的editmap中声明eventManager的trigger方法：
+    //testPostEvent
+    postGuideEvent (state, type) {
+      sceneData.editor.eventManager.trigger('postGuideEvent', type);
+    },
+  2、触发事件的文件中引入、触发方法：
+    import EventManager from '../../editor/core/manager/event_manager.js';
+    methods:{
+      click(){
+        EventManager.trigger('postGuideEvent','baseMap');
+      },
+    }
+  3、在监听事件的页面的created中声明监听方法：
+    const that = this;
+    EventManager.on('postGuideEvent', function (e, property) {
+      switch (property) {
+        case 'baseMap':{
+          that.introJS.nextStep();
+          break;
+        }
+        case 'test':{
+          break;
+        }
+      }
+    })
+
+    
