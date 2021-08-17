@@ -169,4 +169,8 @@ CSS优先级：
       }
     })
 
+网页地址相关：
+  https://www.cnblogs.com/dreambin/p/11059655.html
     
+监听事件出错：
+  更改开始监听的位置，可能在created的时候还没有正确引入jQuerry
