@@ -12,10 +12,7 @@ less中获取元素的方法：
 获取其他文件的数据
 1、vuex:
     引入mapMutations来获取方法
-    并且在下面中添加相关引用、定义
-        store.mutations
-        AppLang
-        EditAttr
+    并且添加相关引用、定义
 2、子组件继承父组件：
     
     
@@ -174,3 +171,18 @@ CSS优先级：
     
 监听事件出错：
   更改开始监听的位置，可能在created的时候还没有正确引入jQuerry
+
+ajax请求:
+  其中patch之类的query参数需要使用FormData数据格式：
+    const param = new FormData;
+    param.append('dataName', dataValue);
+    param.get('dataName');
+  get的query参数需要使用嵌套对象来存储数据：
+    const param = {
+      params: {}, // params名称不能改变
+    };
+    param.params['dataName'] = dataValue;
+    
+git撤销本地commit：
+  git reset --hard <commit_id>
+  回退到某个commit
