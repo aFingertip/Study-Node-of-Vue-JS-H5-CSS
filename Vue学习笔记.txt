@@ -176,3 +176,5 @@ ajax请求:
 git撤销本地commit：
   git reset --hard <commit_id>
   回退到某个commit
+
+涉及到操作数组序列的，比如增删数据项等操作，不要正序操作，包括forEach，需要逆序操作
